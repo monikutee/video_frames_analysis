@@ -90,3 +90,6 @@ Sugadinti kadrai pažymimi raudonu rėmeliu, o naujas vaizdo įrašas įrašomas
 ## Iškilusios problemos
 
 BRISQUE sunkiai instaliavosi ant MacOS, problemos del libsvm-official, bet stackoverflow padėjo.
+
+# Kontaktai
+petrulevicmonika@gmail.com
