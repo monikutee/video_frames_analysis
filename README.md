@@ -18,14 +18,15 @@ Tai Python pagrindu veikiančios programos, skirtos:
 ## Funkcionalumas
 
 **Kadrų išskyrimas:** Naudoja OpenCV biblioteką kadrų išskyrimui iš įvesto vaizdo įrašo.
-**Kadro kokybės įvertinimas:** 
-  - Įvertina kadrų aštrumą, matuojant Laplaso operatoriaus dispersiją.
-  - Apskaičiuoja vidutinį kadrų apšvietimo lygį.
-  - Arba/ir Naudojant BRISQUE modelį, objektyviai įvertinama vaizdo kokybė.
-**Klasterizacija:** Naudoja normalizuotus duomenis ir K-Means algoritmą, kad suskirstytų kadrus į grupes.
-**Sugadintų kadrų identifikavimas:** Pasirenkamas klasteris su mažiausiu blur metrikos vidurkiu, laikomas labiausiai sugadintų kadrų grupe.
-**Vizualus pažymėjimas:** Sugadinti kadrai pažymimi raudonu rėmeliu ir įrašomi į naują vaizdo įrašą.
-**Duomenų vizualizacija:** Programa generuoja diagramą, kurioje pavaizduotas kadrų aštrumo metrikos pasiskirstymas bei klasterių susiskirstymas.
+**Kadro kokybės įvertinimas:**
+
+- Įvertina kadrų aštrumą, matuojant Laplaso operatoriaus dispersiją.
+- Apskaičiuoja vidutinį kadrų apšvietimo lygį.
+- Arba/ir Naudojant BRISQUE modelį, objektyviai įvertinama vaizdo kokybė.
+  **Klasterizacija:** Naudoja normalizuotus duomenis ir K-Means algoritmą, kad suskirstytų kadrus į grupes.
+  **Sugadintų kadrų identifikavimas:** Pasirenkamas klasteris su mažiausiu blur metrikos vidurkiu, laikomas labiausiai sugadintų kadrų grupe.
+  **Vizualus pažymėjimas:** Sugadinti kadrai pažymimi raudonu rėmeliu ir įrašomi į naują vaizdo įrašą.
+  **Duomenų vizualizacija:** Programa generuoja diagramą, kurioje pavaizduotas kadrų aštrumo metrikos pasiskirstymas bei klasterių susiskirstymas.
 
 ## Diegimo instrukcijos
 
@@ -72,15 +73,16 @@ python laplacian.py --video input.mp4 --output output_laplacian.mp4
 Naudojant cv2.VideoCapture, iš įvesto vaizdo įrašo išskiriami visi kadrai, o taip pat gaunama vaizdo kadrų dažnio (FPS) reikšmė.
 
 **Metrikų apskaičiavimas:**
- - Laplaso metrika: Apskaičiuojama naudojant cv2.Laplacian.
- - Apšvietimo lygis: Nustatomas apskaičiuojant vidutinę kadrų šviesumą.
- - BRISQUE balas: Apskaičiuojamas naudojant BRISQUE modelio biblioteką.
-   
+
+- Laplaso metrika: Apskaičiuojama naudojant cv2.Laplacian.
+- Apšvietimo lygis: Nustatomas apskaičiuojant vidutinę kadrų šviesumą.
+- BRISQUE balas: Apskaičiuojamas naudojant BRISQUE modelio biblioteką.
+
 **Duomenų normalizavimas ir klasterizacija:**
 Gauti trijų savybių duomenys normalizuojami naudojant StandardScaler, o K-Means algoritmas suskirsto kadrus į tris grupes.
 
 **Blogiausios kokybės kadrų identifikavimas:**
-Klasteris su aukščiausiu vidutiniu BRISQUE arba blur balu laikomas blogiausios kokybės grupės atstovu.
+Klasteris su aukščiausiu vidutiniu BRISQUE arba BLUR balu laikomas blogiausios kokybės grupės atstovu.
 
 **Rezultatų išvestis:**
 Sugadinti kadrai pažymimi raudonu rėmeliu, o naujas vaizdo įrašas įrašomas nurodytu keliu. Taip pat pateikiama diagrama, rodanti kadrų blur metrikos pasiskirstymą bei klasterių susiskirstymą.
@@ -88,4 +90,3 @@ Sugadinti kadrai pažymimi raudonu rėmeliu, o naujas vaizdo įrašas įrašomas
 ## Iškilusios problemos
 
 BRISQUE sunkiai instaliavosi ant MacOS, problemos del libsvm-official, bet stackoverflow padėjo.
-

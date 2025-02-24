@@ -96,9 +96,9 @@ def main(video_path, output_video_path):
     
     # 7. Parodome diagramos pavidalu kadrų blur metrikos pasiskirstymą bei klasterių susiskirstymą
     plt.figure(figsize=(10,6))
-    plt.scatter(range(len(features)), features[:, 0], c=clusters, cmap='viridis')
+    plt.scatter(range(len(features)), features[:, 2], c=clusters, cmap='viridis')
     plt.xlabel("Kadro numeris")
-    plt.ylabel("Blur metrika (Laplacian variacija)")
+    plt.ylabel("BRISQUE metrika")
     plt.title("Kadrų aštrumo metrikos ir klasterizacijos rezultatai")
     plt.colorbar(label="Klasteris")
     plt.show()

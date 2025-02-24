@@ -13,8 +13,9 @@ def extract_frames(video_path):
         if not ret:
             break
         frames.append(frame)
+    fps = cap.get(cv2.CAP_PROP_FPS)
     cap.release()
-    return frames
+    return frames, fps
 
 def compute_blur_metric(frame):
     """Apskaičiuoja kadrų aštrumo lygį naudojant Laplaso operatorių.
@@ -36,7 +37,7 @@ def mark_frame(frame):
 
 def main(video_path, output_video_path):
     # 1. Išskiriame kadrus iš įvesto vaizdo įrašo
-    frames = extract_frames(video_path)
+    frames, fps = extract_frames(video_path)
     print("Išskirta kadrų:", len(frames))
     
     # 2. Apskaičiuojame kokybės metrikas kiekvienam kadrui
@@ -67,7 +68,6 @@ def main(video_path, output_video_path):
     
     # 6. Sukuriame naują vaizdo įrašą, kuriame sugadinti kadrai pažymėti raudonu rėmeliu
     height, width, _ = frames[0].shape
-    fps = 30  # Galite išvesti tikrą FPS iš įvesto vaizdo įrašo, jei reikia
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
     
